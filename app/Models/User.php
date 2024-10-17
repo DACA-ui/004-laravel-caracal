@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'id_rol'
     ];
 
     /**
@@ -37,6 +38,12 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+
+    public function rol()
+    {
+         return $this->belongsTo(Rol::class);  // 'rol_id' referencia al 'id' de Rol
+    }
+
     protected function casts(): array
     {
         return [

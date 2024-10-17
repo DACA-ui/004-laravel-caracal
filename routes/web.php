@@ -1,11 +1,17 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AsignacionDocenteTempController;
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.basic');
 });
+
+Route::get('/loadDeclaration/index', [AsignacionDocenteTempController::class, 'index'])->name('loadDeclaration.index');
+Route::get('/loadDeclaration/{id}', [AsignacionDocenteTempController::class, 'show'])->name('loadDeclaration.show');
+Route::get('/generar-pdf/{id}', [PDFController::class, 'generarPDF'])->name('generarPDF');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
